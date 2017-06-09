@@ -12,11 +12,13 @@ The clean up process is very easy. Start by opening up a new terminal and follow
 
 
 ```
-cd ~/Users/XXXX/DEVNET-2585-Guide
+cd ~
+
+cd DEVNET-2585-Guide
 
 vagrant destroy
 
-cd ..
+cd ~
 
 rm -rf DEVNET-2585-Guide
 ```
