@@ -1,0 +1,3 @@
+venv/
+*.old
+*.DS_Store
