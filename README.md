@@ -1,3 +1,3 @@
 # DEVNET-2585 - Hands On Kicking the Tires of RESTCONF
 
-Welcome to the lab guide for DEVNET-2557 Hands On Application Hosting in IOS-XE. Please click [here](DEVNET-2585-Guide.md) to start the lab.
+Welcome to the lab guide for DEVNET-2585 Hands on Kicking the Tires of RESTCONF. Please click [here](DEVNET-2585-Intro.md) to start the lab.
