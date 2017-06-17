@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ~/DEVNET-2561-Guide
+cd ~/DEVNET-2585-Guide
 vagrant destroy
 cd ~/
-rm -rf ~/DEVNET-2561-Guide
+rm -rf ~/DEVNET-2585-Guide
