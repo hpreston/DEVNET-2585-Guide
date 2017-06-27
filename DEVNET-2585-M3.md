@@ -124,6 +124,7 @@ Optionally you can just paste the following contents into the area marked in red
   }
 }
 ```
+
 One the details have been filled in send the RESTCONF to the router and re run the `GET` request from earlier to validate that the changes have been made.
 
 
