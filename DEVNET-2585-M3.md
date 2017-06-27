@@ -30,7 +30,7 @@ http://127.0.0.1:2224/restconf/api/running/interfaces
 <br>
 <br>
 
-![](assets/postman-lab-1.jpg)
+![postman1](assets/postman-lab-1.jpg)
 
 <br>
 <br>
@@ -41,7 +41,7 @@ http://127.0.0.1:2224/restconf/api/running/interfaces
 <br>
 <br>
 
-![](assets/postman-lab-2.jpg)
+![postman2](assets/postman-lab-2.jpg)
 
 <br>
 <br> 
@@ -51,7 +51,7 @@ http://127.0.0.1:2224/restconf/api/running/interfaces
 <br>
 <br>
 
-![](assets/postman-lab-3.jpg)
+![postman3](assets/postman-lab-3.jpg)
 
 <br>
 <br> 
@@ -59,12 +59,12 @@ http://127.0.0.1:2224/restconf/api/running/interfaces
 <br>
 <br> 
 
-![](assets/postman-lab-4.jpg)
+![postman4](assets/postman-lab-4.jpg)
 
 <br>
 <br> 
 
-![](assets/postman-lab-5.jpg)
+![postman5](assets/postman-lab-5.jpg)
 
 <br>
 <br> 
@@ -82,7 +82,7 @@ Now that we understand how to use Postman to make RESTCONF requests to the route
 <br>
 <br>
 
-![](assets/postman-lab-6.jpg)
+![postman6](assets/postman-lab-6.jpg)
 
 <br>
 <br> 
@@ -94,7 +94,7 @@ Using this data we can craft our JSON payload to specify the IP address, inteffa
 <br>
 <br>
 
-![](assets/postman-lab-7.jpg)
+![postman7](assets/postman-lab-7.jpg)
 
 <br>
 <br> 
