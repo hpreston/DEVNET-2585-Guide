@@ -29,7 +29,7 @@ http://127.0.0.1:2224/restconf/api/running/interfaces
 - Select `GET` from the drop down and enter the URI `http://127.0.0.1:2224/restconf/api/running/interfaces`
 <br>
 <br>
-![](assets/postman-lab-1.jpg)
+![] (assets/postman-lab-1.jpg)
 <br>
 <br>
 - On the `Authorization` tab
@@ -39,7 +39,7 @@ http://127.0.0.1:2224/restconf/api/running/interfaces
 <br>
 <br>
 
-![](assets/postman-lab-2.jpg)
+![] (assets/postman-lab-2.jpg)
 
 <br>
 <br> 
@@ -48,16 +48,16 @@ http://127.0.0.1:2224/restconf/api/running/interfaces
 	- Header `Content-Type` with a value of `application/vnd.yang.data+json`
 <br>
 <br>
-![](assets/postman-lab-3.jpg)
+![] (assets/postman-lab-3.jpg)
 <br>
 <br> 
 - Click `Send` to submit the RESTCONF request to the router and review the ouput
 <br>
 <br> 
-![](assets/postman-lab-4.jpg)
+![] (assets/postman-lab-4.jpg)
 <br>
 <br> 
-![](assets/postman-lab-5.jpg)
+![] (assets/postman-lab-5.jpg)
 <br>
 <br> 
 
@@ -73,7 +73,7 @@ Now that we understand how to use Postman to make RESTCONF requests to the route
 
 <br>
 <br>
-![](assets/postman-lab-6.jpg)
+![] (assets/postman-lab-6.jpg)
 <br>
 <br> 
 Using this data we can craft our JSON payload to specify the IP address, intefface description, and enable the interface. There are two options for building the JSON we will send to the router. The first is to run a GET on interface G3 and copy the output and modify the interface name to `GigabitEthernet2` The other option is to follow along below:
@@ -83,7 +83,7 @@ Using this data we can craft our JSON payload to specify the IP address, inteffa
 
 <br>
 <br>
-![](assets/postman-lab-7.jpg)
+![] (assets/postman-lab-7.jpg)
 <br>
 <br> 
 
