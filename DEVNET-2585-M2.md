@@ -171,10 +171,11 @@ For this example we will craft our REST call to pull interface statistics from t
 
 **From the terminal window please enter the following:**
 
-```
+``
+
 curl -u vagrant:vagrant \
-    -H "Accept: application/vnd.yang.data+json" \
-   http://127.0.0.1:2224/restconf/api/operational/interfaces-state/Gigabit3?deep
+   -H "Accept: application/vnd.yang.data+json" \
+   http://127.0.0.1:2224/restconf/api/operational/interfaces-state/interface/GigabitEthernet3?deep
 ```   
 
 Before we look at the output let's review a couple of changes:

@@ -47,7 +47,7 @@ In this module we will use the Python library `pyang` to view the data structure
 **From the terminal window please enter the following:**
 
 ```
-pyang -f tree ietf-interfaces.yang
+pyang tree -f ietf-interfaces.yang
 ```
 
 You should see an output similar to the shaded box below.
@@ -89,7 +89,7 @@ One of the advantages of YANG is any one can write their own model provided they
 **From the terminal window please enter the following:**
 
 ```
-pyang -f tree cisco-platform-software.yang
+pyang tree -f cisco-platform-software.yang
 ```
 
 You should see an output similar to the shaded box below:

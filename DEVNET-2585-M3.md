@@ -38,7 +38,9 @@ http://127.0.0.1:2224/restconf/api/running/interfaces
 	- Click `Update Request` the button is the same but the context may change.
 <br>
 <br>
+
 ![](assets/postman-lab-2.jpg)
+
 <br>
 <br> 
 - On the Headers tab add two headers under `Authorization`
