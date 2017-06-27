@@ -29,14 +29,14 @@ On the right hand side of the screen there is a button labeled `Code`. Click it.
 
 <br>
 <br>
-![](assets/postman-lab-8.jpg)
+![postman8](assets/postman-lab-8.jpg)
 <br>
 <br>
 This will generate the python code we will modify in our terminal. Let's click `Copy to Clipboard` before we proceed.
 
 <br>
 <br>
-![](assets/postman-lab-9.jpg)
+![postman9](assets/postman-lab-9.jpg)
 <br>
 <br>
 
