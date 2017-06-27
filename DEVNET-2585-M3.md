@@ -29,6 +29,7 @@ http://127.0.0.1:2224/restconf/api/running/interfaces
 - Select `GET` from the drop down and enter the URI `http://127.0.0.1:2224/restconf/api/running/interfaces`
 <br>
 <br>
+
 ![](assets/postman-lab-1.jpg)
 
 <br>
