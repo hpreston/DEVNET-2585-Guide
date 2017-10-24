@@ -26,37 +26,36 @@ Before we begin let's briefly review the RESTCONF URI format.
 
 **The RESTCONF URI format**
 ```
-http://<ADDRESS>/<ROOT>/<DATA STORE>/<[YANG MODULE:]CONTAINER>/<LEAF>[?<OPTIONS>]
+https://<ADDRESS>/<ROOT>/<DATA STORE>/<[YANG MODULE:]CONTAINER>/<LEAF>[?<OPTIONS>]
 ```
 Some notes:
 
-- ADDRESS - The IP (or DNS Name) and Port where the RESTCONF Agent is available
-- ROOT - The main entry point for RESTCONF requests.
-	- Before connecting to a RESTCONF server, you must determine the root
-	-	On the Cisco IOS-XE 16.3-16.5, this is restconf/api
-- DATA STORE - The data store being queried
-- [YANG MODULE:]CONTAINER - The base model container being used
-	- Inclusion of the module name is optional
-- LEAF - An individual element from within the container
-	- [?<OPTIONS>] - Some network devices may support options sent as query parameters that impact returned results.
-	- These options are NOT required and can be omitted
+* **ADDRESS** - Of the RESTCONF Agent
+* **ROOT** - The main entry point for RESTCONF requests.
+	* Discoverable at https://<ADDRESS>/.well-known/host-meta
+* **DATA STORE** - The data store being queried 
+* **[YANG MODULE:]CONTAINER** - The base model container being used.  Providing the module name is optional.
+* **LEAF** - An individual element from within the container
+* **[?&#60;OPTIONS&#62;]** - optional parameters that impact returned results.
+
 
 Now that we have reviewed the format of our URL let's start building API calls with curl.
 
 **From the terminal window please enter the following:**
 
 ```
-curl -u vagrant:vagrant \
-    -H "Accept: application/vnd.yang.data+json" \
-   http://127.0.0.1:2224/restconf/api/running/interfaces 
+curl -k -u vagrant:vagrant \
+    -H "Accept: application/yang-data+json" \
+   https://127.0.0.1:2225/restconf/data/ietf-interfaces:interfaces
 ```
 
-Before we review the output let's talk through the command. 
+Before we review the output let's talk through the command.
 
 - First we are using the `\` command to break the command into a multiple lines for easier reading
+- `-k` Allows "insecure" requests with self-signed certificates
 - In the first line the `-u vagrant:vagrant` specifies the username and password of of the lab router
 - In the second line the `-H` specifies the HTTP headers we will send in our in our request. We are telling the router we expect JSON as our data format.
-- The third line is the actual REST URI. Recall that in our lab we are running a router in a virtual machine. The local hypervisor is remapping port 80 to 2224. In a 'real' environment the URL would typically not re-map port 80.
+- The third line is the actual REST URI. Recall that in our lab we are running a router in a virtual machine. The local hypervisor is remapping port 443 to 2225. In a 'real' environment the URL would typically not re-map port 443.
 
 If we sent our curl command correctly we should see similar output to:
 
@@ -65,18 +64,54 @@ If we sent our curl command correctly we should see similar output to:
   "ietf-interfaces:interfaces": {
     "interface": [
       {
-        "name": "GigabitEthernet1"
+        "name": "GigabitEthernet1",
+        "description": "**THIS IS INTERFACE 1** ** DO NOT CHANGE UNDER PENALTY OF DEATH**",
+        "type": "iana-if-type:ethernetCsmacd",
+        "enabled": true,
+        "ietf-ip:ipv4": {
+        },
+        "ietf-ip:ipv6": {
+        }
       },
       {
-        "name": "GigabitEthernet2"
+        "name": "GigabitEthernet2",
+        "description": "**THIS IS INTERFACE 2",
+        "type": "iana-if-type:ethernetCsmacd",
+        "enabled": true,
+        "ietf-ip:ipv4": {
+          "address": [
+            {
+              "ip": "172.16.20.1",
+              "netmask": "255.255.255.0"
+            }
+          ]
+        },
+        "ietf-ip:ipv6": {
+        }
       },
       {
-        "name": "GigabitEthernet3"
+        "name": "GigabitEthernet3",
+        "description": "**THIS IS INTERFACE 3",
+        "type": "iana-if-type:ethernetCsmacd",
+        "enabled": true,
+        "ietf-ip:ipv4": {
+          "address": [
+            {
+              "ip": "192.168.185.1",
+              "netmask": "255.255.255.0"
+            }
+          ]
+        },
+        "ietf-ip:ipv6": {
+        }
       }
     ]
   }
 }
 ```
+
+<!--
+This section isn't as relevant in RFC8040.  Option is now `depth=NUM` to detail how many layers of nesting to return.  Default is "unbound" which returns everything.  
 
 ## Module 2.2 - Using Options to Gather Additional Details
 
@@ -92,17 +127,17 @@ In the previous example we used curl to request the interfaces running on a rout
 curl -u vagrant:vagrant \
     -H "Accept: application/vnd.yang.data+json" \
    http://127.0.0.1:2224/restconf/api/running/interfaces?deep
-   
+
 curl -u vagrant:vagrant \
     -H "Accept: application/vnd.yang.data+json" \
    http://127.0.0.1:2224/restconf/api/running/interfaces?shallow
-   
+
 curl -u vagrant:vagrant \
     -H "Accept: application/vnd.yang.data+json" \
    http://127.0.0.1:2224/restconf/api/running/interfaces?verbose
 ```
 
-Of particular interest in the `?verbose` option. The response output passes back additional details to build our REST calls for the individual interfaces. 
+Of particular interest in the `?verbose` option. The response output passes back additional details to build our REST calls for the individual interfaces.
 
 Response of `?verbose` call.
 
@@ -159,27 +194,22 @@ The output should match below:
     }
   }
 }
-```
+``` -->
 
 ## Module 2.3 - Viewing Operational Data
-
-As we briefly discussed in the introduction RESTCONF uses the concept of data stores. In our previous example we queried details in `running` data store. We can see this in our REST call:
-
-http://127.0.0.1:2224/restconf/api/**running**/interfaces/interface/GigabitEthernet3?deep
 
 For this example we will craft our REST call to pull interface statistics from the `operational` data store.
 
 **From the terminal window please enter the following:**
 
 ```
-curl -u vagrant:vagrant \
-   -H "Accept: application/vnd.yang.data+json" \
-   http://127.0.0.1:2224/restconf/api/operational/interfaces-state/interface/GigabitEthernet3?deep
+curl -k -u vagrant:vagrant \
+   -H "Accept: application/yang-data+json" \
+	 https://127.0.0.1:2225/restconf/data/ietf-interfaces:interfaces-state/interface=GigabitEthernet3
 ```   
 
 Before we look at the output let's review a couple of changes:
 
-- As we should see in the URI we've changed `running` to `operational` data.
 - Additionally we are no longer calling the `interface` container in the ietf-intefaces YANG model. We are now using the 2nd container `interface-state`. Feel free to review by sending `pyang -f tree ietf-interfaces.yang`
 
 After running the command the output should look similar to:

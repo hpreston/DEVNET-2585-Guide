@@ -23,10 +23,10 @@ First we will set up the basics of our API calls.
 - To start select `GET` from the drop down and enter the following URI into the field
 
 ```
-http://127.0.0.1:2224/restconf/api/running/interfaces 
+https://127.0.0.1:2225/restconf/data/ietf-interfaces:interfaces
 ```
 
-- Select `GET` from the drop down and enter the URI `http://127.0.0.1:2224/restconf/api/running/interfaces`
+- Select `GET` from the drop down and enter the URI `https://127.0.0.1:2225/restconf/data/ietf-interfaces:interfaces`
 <br>
 <br>
 
@@ -37,37 +37,22 @@ http://127.0.0.1:2224/restconf/api/running/interfaces
 - On the `Authorization` tab
 	- Select `Basic Auth` from the drop down.
 	- Use `vagrant` as both the username and password.
-	- Click `Update Request` the button is the same but the context may change.
+	- Click `Update Request` the button is the same but the context may change. (If button available)
 <br>
 <br>
 
 ![postman2](assets/postman-lab-2.jpg)
 
 <br>
-<br> 
+<br>
 - On the Headers tab add two headers under `Authorization`
-	- Header `Accept` with a value of `application/vnd.yang.data+json`
+	- Header `Accept` with a value of `application/yang-data+json`
 	- Header `Content-Type` with a value of `application/vnd.yang.data+json`
+- Click `Send` to submit the RESTCONF request to the router and review the ouput
 <br>
 <br>
 
 ![postman3](assets/postman-lab-3.jpg)
-
-<br>
-<br> 
-- Click `Send` to submit the RESTCONF request to the router and review the ouput
-<br>
-<br> 
-
-![postman4](assets/postman-lab-4.jpg)
-
-<br>
-<br> 
-
-![postman5](assets/postman-lab-5.jpg)
-
-<br>
-<br> 
 
 ## Module 3.2 - Using RESTCONF to Update Device Configuration
 
@@ -76,7 +61,7 @@ Now that we understand how to use Postman to make RESTCONF requests to the route
 
 * First let's pull the status of interface Gigabit 2 on the router.
 	* Remember back to the previous exercise. We will need to craft the URI as follows:
-	* `http://127.0.0.1:2224/restconf/api/running/interfaces/interface/GigabitEthernet2?deep`
+	* `https://127.0.0.1:2225/restconf/data/ietf-interfaces:interfaces/interface=GigabitEthernet2`
 	* Once you've entered the URI send the command
 
 <br>
@@ -85,10 +70,10 @@ Now that we understand how to use Postman to make RESTCONF requests to the route
 ![postman6](assets/postman-lab-6.jpg)
 
 <br>
-<br> 
-Using this data we can craft our JSON payload to specify the IP address, intefface description, and enable the interface. There are two options for building the JSON we will send to the router. The first is to run a GET on interface G3 and copy the output and modify the interface name to `GigabitEthernet2` The other option is to follow along below:
+<br>
+Using this data we can craft our JSON payload to specify the IP address, interface description, and enable the interface. There are two options for building the JSON we will send to the router. The first is to run a GET on interface G3 and copy the output and modify the interface name to `GigabitEthernet2` The other option is to follow along below:
 
-- First change the drop down next to the URI from `GET` to `PUT` 
+- First change the drop down next to the URI from `GET` to `PUT`
 - Select the `Body` tab and select and paste the contents of the lower box (in blue below) into the upper box.
 
 <br>
@@ -97,11 +82,11 @@ Using this data we can craft our JSON payload to specify the IP address, inteffa
 ![postman7](assets/postman-lab-7.jpg)
 
 <br>
-<br> 
+<br>
 
 - Supply the following values to make what's in the screen shot
 	- Set the value of `enabled` to `true`
-	- Set the value of `ietf-ip:ipv4` to 172.16.24.1 with a netmask of `255.255.255`
+	- Set the value of `ietf-ip:ipv4` to 172.16.24.1 with a netmask of `255.255.255.0`
 
 Optionally you can just paste the following contents into the area marked in red on Postman.
 

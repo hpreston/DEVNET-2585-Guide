@@ -15,11 +15,11 @@
 
 ## Module 4.1 - Using Postman to Generate Python
 
-As we discussed at the start of the lab one of the rests RESTCONF has had fast adoption is the relative ease of use due to the number of tools available. One of the additional benefits of Postman is the ability to generate code based off the REST call made in the UI. 
+As we discussed at the start of the lab one of the rests RESTCONF has had fast adoption is the relative ease of use due to the number of tools available. One of the additional benefits of Postman is the ability to generate code based off the REST call made in the UI.
 
 Let's jump into Postman and generate our code. First let's modify the previous `GET` to retrieve the configuration of interface Gigabit 3. The URI will be
 
-`http://127.0.0.1:2224/restconf/api/running/interfaces/interface/GigabitEthernet3?deep`
+`https://127.0.0.1:2225/restconf/data/ietf-interfaces:interfaces/interface=GigabitEthernet3`
 
 ***DO NOT HIT SEND***
 
@@ -53,7 +53,15 @@ Now that we have a copy of our base Python code let's open up a file in our term
 nano test-python.py
 ```
 
-After the file opens you can paste the contents. If you are not familiar with a Mac please use `cmd+V`. Save the file by hitting `ctrl+x` and responding with `y` when prompted.
+After the file opens you can paste the contents. If you are not familiar with a Mac please use `cmd+V`.
+
+You'll need to make **one** code change for it to work.  Because the devices are using self-signed certificates, we need to tell Python to bypass certificate verification.  Update the following line to include `verify=False` as shown below.  
+
+```python
+response = requests.request("GET", url, data=payload, headers=headers, verify=False)
+```
+
+Save the file by hitting `ctrl+x` and responding with `y` when prompted.
 
 After creating your python script run it with the following.
 
